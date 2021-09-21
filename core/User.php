@@ -2,7 +2,8 @@
 
 namespace core;
 
-class User
+use \core\UsrInteface;
+class User implements UsrInteface
 {
     protected $db;
     public function __construct($db)
