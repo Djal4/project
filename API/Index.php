@@ -2,14 +2,21 @@
 
 namespace API;
 
-//
+require_once("../autoload.php");
 
-//headers
+use \core\User;
+use \DB\Database;
 
-$usr=new User();
+
+$usr=new \core\User(new Database());
 
 switch($_SERVER['REQUEST_METHOD']){
     case "GET":
+        if(!isset($_GET['id']))
+        {
+            $response=400;
+            break;
+        }
         $data=$usr->read($_GET['id']);
         $data=array(
             'name' => $data[0],
@@ -78,5 +85,5 @@ switch($_SERVER['REQUEST_METHOD']){
         else $response=400;
         break;
     }
-echo $response;
+//echo $response;
 ?>

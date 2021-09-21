@@ -2,10 +2,10 @@
 
 namespace core;
 
-interface UsrInteface
+interface UsrInterface
 {
-    public function create();
-    public function read();
-    public function update();
-    public function delete();
+    public function create($name,$lastname,$role,$group);
+    public function read($id);
+    public function update($id,$data);
+    public function delete($id);
 }

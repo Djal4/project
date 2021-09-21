@@ -1,14 +1,11 @@
-<?
+<?php
 
 namespace DB;
 
-use PDO;
+use \PDO;
 
-$host="localhost";
-    $db_name="";
-    $usr="root";
-    $pass="";
-    class DB extends PDO
+
+    class Database extends PDO
     {
         private $host;
         private $db_name;

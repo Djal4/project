@@ -1,9 +1,9 @@
-<?
+<?php
 
 namespace core;
 
-use \core\UsrInteface;
-class User implements UsrInteface
+use \core\UsrInterface;
+class User implements UsrInterface
 {
     protected $db;
     public function __construct($db)
