@@ -26,7 +26,7 @@ class User implements UsrInteface
         FROM user LEFT JOIN role ON user.role_id=role.id LEFT JOIN group_n ON user.group_id=group_n.id WHERE id=?";
         $stmt=$this->db->prepare($sql);
         $stmt->execute(array($id));
-        return $stmt;
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
     public function delete($id)
     {
