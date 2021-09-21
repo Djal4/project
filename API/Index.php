@@ -12,10 +12,10 @@ switch($_SERVER['REQUEST_METHOD']){
     case "GET":
         $data=$usr->read($_GET['id']);
         $data=array(
-            'name' => $name,
-            'lastname' =>
-            'role' =>
-            'group' =>
+            'name' => $data[0],
+            'lastname' => $data[1],
+            'role' => $data[2],
+            'group' => $data[3]
         );
         $response=json_encode($data);
         break;
