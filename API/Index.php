@@ -26,14 +26,30 @@ switch($_SERVER['REQUEST_METHOD']){
             {
                 $usr->delete($_GET['id']);
             }
-            else break;//response
+            else 
+            {
+                $response=400;
+                break;
+            }
         }
-        else break;//response
+        else {
+            $response=400;
+            break;
+        }
+        $response=200;
         break;
     case "PUT":
         if(isset($_GET['id'])) $id=$_GET['id'];
-        else break;//response
-        if(!$usr->read($id)) break;//response
+        else 
+        {
+            $response=400;
+            break;
+        }
+        if(!$usr->read($id)) 
+        {
+            $response=400;
+            break;
+        }
         $json=file_get_contents("php://input");
         $data=json_decode($json);
         if( isset($data['name'])||
@@ -41,8 +57,12 @@ switch($_SERVER['REQUEST_METHOD']){
             isset($data['role_id'])||
             isset($data['group_id']))
             $usr->update($data['name'],$data['lastname'],$data['role_id'],$data['group_id']);
-        else break;
-        //response
+        else 
+        {
+            $response=400;
+            break;
+        }
+        $response=200;
         break;
     case "POST":
         $json=file_get_contents("php://input");
@@ -53,9 +73,10 @@ switch($_SERVER['REQUEST_METHOD']){
             isset($data['group_id']))
             {
                 $usr->create($data['name'],$data['lastname'],$data['role_id'],$data['group_id']);
-                //response 200
+                $response=200;
             }
+        else $response=400;
         break;
     }
-
+echo $response;
 ?>
