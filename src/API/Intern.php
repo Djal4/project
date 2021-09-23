@@ -1,15 +1,14 @@
 <?php
 
-namespace API;
-
-require_once("../autoload.php");
-
-use \core\User;
-use \DB\Database;
+namespace App\API;
 
 
+use \App\core\User;
+use \App\DB\Database;
 
-$usr=new \core\User(new Database());
+require_once("../../vendor/autoload.php");
+
+$usr=new User(new Database());
 $response_data=NULL;
 switch($_SERVER['REQUEST_METHOD']){
     case "GET":
@@ -17,14 +16,19 @@ switch($_SERVER['REQUEST_METHOD']){
             $response=404;
             $data=array("Error"=>"Request cant be finished.");
         }else{
-        $data=$usr->read($_GET['ID']);
-        $data=array(
-            'name' => $data[0],
-            'lastname' => $data[1],
-            'role' => $data[2],
-            'group' => $data[3]
-        );
-        $response=200;
+            $data=$usr->read($_GET['ID']);
+            if($data[2]=="Mentor"){
+                $response=404;
+                $data=array("Error"=>"Request cant be finished.");
+            }else{
+                $data=array(
+                'name' => $data[0],
+                'lastname' => $data[1],
+                'role' => "Intern",
+                'group' => $data[3]
+                );
+                $response=200;
+            }
         }
         break;
     case "DELETE":
@@ -41,11 +45,11 @@ switch($_SERVER['REQUEST_METHOD']){
     case "PUT":
         $json=file_get_contents("php://input");
         $data=json_decode($json);
-        if( isset($data->ID) ||
-            isset($data->name)||
-            isset($data->lastname)||
-            isset($data->role_id)||
-            isset($data->group_id)){
+        if( isset($data->ID)      &&
+            isset($data->name)    &&
+            isset($data->lastname)&&
+            isset($data->group_id)&&
+            !empty($usr->read($data->ID))){
                 $usr->update($data->ID,$data->name,$data->lastname,$data->role_id,$data->group_id);
                 $data=array("Success"=>"Request done.");
                 $response=200;
@@ -58,11 +62,10 @@ switch($_SERVER['REQUEST_METHOD']){
     case "POST":
         $json=file_get_contents("php://input");
         $data=json_decode($json);
-        if( isset($data->name)||
-            isset($data->lastname)||
-            isset($data->role_id)||
+        if( isset($data->name)    &&
+            isset($data->lastname)&&
             isset($data->group_id)){
-                $usr->create($data->name,$data->lastname,$data->role_id,$data->group_id);
+                $usr->create($data->name,$data->lastname,1,$data->group_id);
                 $response=200;
                 $data=array("Success"=>"Request done.");
             }

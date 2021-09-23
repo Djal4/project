@@ -1,12 +1,13 @@
 <?php
 
-namespace core;
+namespace App\core;
 
-use \core\UsrInterface;
-class User implements UsrInterface
+use \App\DB\Database;
+use \App\core\CRUD\CRUD;
+class User extends CRUD
 {
     protected $db;
-    public function __construct($db)
+    public function __construct(Database $db)
     {
         $this->db=$db;
     }
@@ -35,11 +36,11 @@ class User implements UsrInterface
         $stmt->execute(array($id));
         return true;
     }
-    public function update($id,$name,$lastname,$role,$group)
+    public function update($id,$name,$lastname,$group)
     {
-        $sql="UPDATE user SET name=?,lastname=?,role_id=?,group_id=? WHERE id=?";
+        $sql="UPDATE user SET name=?,lastname=?,group_id=? WHERE id=?";
         $stmt=$this->db->prepare($sql);
-        $stmt->execute(array($name,$lastname,$role,$group,$id));
+        $stmt->execute(array($name,$lastname,$group,$id));
     }
 }
 ?>

@@ -1,6 +1,6 @@
 <?php
 
-use DB\Database;
+use App\DB\Database;
 
 $names=array("Kason","Lizzie","Marius","Jovan","Rosina","Sherri","Lilly-Grace","Crystal","Macey","Brent");
 $lastNames=array("Riddle","Boone","Paul","Stubbs","Mckay","Luna","Nairn","Traynor","Weber","Strong");
