@@ -40,6 +40,8 @@ class Comment extends CRUDC
                 (?,?,?,?)";
                 $stmt=$this->db->prepare($sql);
                 $stmt->execute(array($mentor_id,$intern_id,$comment,date("Y-m-d")));
+            }else{
+                return false;
             }
     }
     public function readComm($id)
@@ -71,7 +73,8 @@ class Comment extends CRUDC
         $intern=$this->readUser($intern_id);
         if($mentor['role_id']==2 && 
         $intern['role_id']==1 &&
-        $mentor['group_id']==$intern['group_id']){
+        $mentor['group_id']==$intern['group_id'] &&
+        !empty($this->readComm($id))){
             $sql="UPDATE
             comments
             SET
