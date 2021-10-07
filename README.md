@@ -1,9 +1,11 @@
 API Endpoints:
 /project/src/public{/Intern,/Mentor,/Group,/Comment}
+
 When doing get request if Id is not provided it will list all:
 -users(mentors/interns)
 -groups
--comments.
+-comments
+
 POST:
 When sending post request you must provide:
 -title for group
