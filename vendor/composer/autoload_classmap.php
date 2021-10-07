@@ -6,10 +6,15 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\API\\Comment' => $baseDir . '/src/API/Comment.php',
+    'App\\API\\Group' => $baseDir . '/src/API/Group.php',
+    'App\\API\\Intern' => $baseDir . '/src/API/Intern.php',
+    'App\\API\\Mentor' => $baseDir . '/src/API/Mentor.php',
+    'App\\API\\REST' => $baseDir . '/src/API/REST.php',
+    'App\\API\\Response' => $baseDir . '/src/API/Response.php',
     'App\\DB\\Database' => $baseDir . '/src/DB/Database.php',
+    'App\\Route\\Router' => $baseDir . '/src/Route/Router.php',
     'App\\core\\CRUD\\CRUD' => $baseDir . '/src/core/CRUD/CRUD.php',
-    'App\\core\\CRUD\\CRUDC' => $baseDir . '/src/core/CRUD/CRUDC.php',
-    'App\\core\\CRUD\\CRUDG' => $baseDir . '/src/core/CRUD/CRUDG.php',
     'App\\core\\Comment' => $baseDir . '/src/core/Comment.php',
     'App\\core\\Group' => $baseDir . '/src/core/Group.php',
     'App\\core\\User' => $baseDir . '/src/core/User.php',

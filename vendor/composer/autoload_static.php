@@ -21,10 +21,15 @@ class ComposerStaticInitd8581c6fb85271430ece356c86f83d6f
     );
 
     public static $classMap = array (
+        'App\\API\\Comment' => __DIR__ . '/../..' . '/src/API/Comment.php',
+        'App\\API\\Group' => __DIR__ . '/../..' . '/src/API/Group.php',
+        'App\\API\\Intern' => __DIR__ . '/../..' . '/src/API/Intern.php',
+        'App\\API\\Mentor' => __DIR__ . '/../..' . '/src/API/Mentor.php',
+        'App\\API\\REST' => __DIR__ . '/../..' . '/src/API/REST.php',
+        'App\\API\\Response' => __DIR__ . '/../..' . '/src/API/Response.php',
         'App\\DB\\Database' => __DIR__ . '/../..' . '/src/DB/Database.php',
+        'App\\Route\\Router' => __DIR__ . '/../..' . '/src/Route/Router.php',
         'App\\core\\CRUD\\CRUD' => __DIR__ . '/../..' . '/src/core/CRUD/CRUD.php',
-        'App\\core\\CRUD\\CRUDC' => __DIR__ . '/../..' . '/src/core/CRUD/CRUDC.php',
-        'App\\core\\CRUD\\CRUDG' => __DIR__ . '/../..' . '/src/core/CRUD/CRUDG.php',
         'App\\core\\Comment' => __DIR__ . '/../..' . '/src/core/Comment.php',
         'App\\core\\Group' => __DIR__ . '/../..' . '/src/core/Group.php',
         'App\\core\\User' => __DIR__ . '/../..' . '/src/core/User.php',
