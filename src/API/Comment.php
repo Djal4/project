@@ -38,8 +38,12 @@ class Comment extends Response implements REST
      */
     public function get($id=NULL)
     {
+        if($id==NULL){
+            //Error message.
+            [$this->response,$this->response_data]=$this->error();
+        }
         //Checks is $id set and is there intern
-        if(isset($id) && !empty([$user,$data]=$this->pcmt->read($id))){
+        else if(isset($id) && !empty([$user,$data]=$this->pcmt->read($id))){
             //Converts data to json
             $toJson=[];
             $toJson[]=array(

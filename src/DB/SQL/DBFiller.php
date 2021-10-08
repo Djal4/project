@@ -1,13 +1,14 @@
 <?php
 
 use App\DB\Database;
+use App\core\User;
+
+require_once("../../autoload.php");
 
 $names=array("Kason","Lizzie","Marius","Jovan","Rosina","Sherri","Lilly-Grace","Crystal","Macey","Brent");
 $lastNames=array("Riddle","Boone","Paul","Stubbs","Mckay","Luna","Nairn","Traynor","Weber","Strong");
 
-require_once("../../autoload.php");
-$db=new \DB\Database();
-$usr=new \core\User($db);
+$usr=new User(new Database());
 for($i=0;$i<30;$i++)
 {
     $id=rand(0,9);

@@ -36,7 +36,9 @@ class Router
      */
     public function getUri()
     {
-        return trim(str_replace("/project/src/public/","",$_SERVER['REQUEST_URI']),"/");
+        $url=str_replace("index.php","",$_SERVER['PHP_SELF']);
+        return str_replace($url,"",$_SERVER['REQUEST_URI']);
+
     }
     /**
      * Matches routes and then requires files.
