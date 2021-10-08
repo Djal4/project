@@ -36,7 +36,7 @@ class Router
      */
     public function getUri()
     {
-        $url=str_replace("index.php","",$_SERVER['PHP_SELF']);
+        $url=str_replace("index.php","",$_SERVER['SCRIPT_NAME']);
         return str_replace($url,"",$_SERVER['REQUEST_URI']);
 
     }
